@@ -14,12 +14,12 @@ if has('gui_running')
 else 
   colorscheme base16-solarized
 endif
+
 set background=dark
+
 syntax on
 filetype on
 filetype plugin indent on
-
-"set foldmethod=syntax
 
 set nu
 set smartindent
@@ -52,9 +52,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 au BufRead, BufNewFile *.md set ft=markdown syntax=markdown
 au BufRead, BufNewFile *.h set ft=c syntax=c
 
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-au BufRead,BufNewFile behave.js set ft=javascript syntax=jquery
-
 autocmd FileType html let b:match_words = '<\(\w\w*\):</\1,{:}'
 autocmd FileType xhtml let b:match_words = '<\(\w\w*\):</\1,{:}'
 autocmd FileType mason let b:match_words = '<\(\w\w*\):</\1,{:}'
@@ -65,9 +62,6 @@ nmap <C-Tab> :tabnext<CR>
 nmap <C-S-Tab> :tabprev<CR>
 nmap <C-S-t> :tabnew<CR>
 map <F2> :NERDTreeToggle<CR>
-
-"fuzzy finder, find files quickly.
-"map <leader>t :FuzzyFinderTextMate<CR>
 
 
 let g:Powerline_symbols = 'fancy'
@@ -106,4 +100,29 @@ autocmd Filetype haml setlocal noexpandtab ts=2 sts=2
 
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
+
+"also take in consideration local .vimrc files
 set exrc
+
+
+"folding
+set foldenable
+set foldlevelstart=99 "open most folds
+"
+" space open/closes folds
+nnoremap <space> za
+
+set foldmethod=indent   " fold based on indent level
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+
+" jk is escape
+inoremap jk <esc>
+
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+
+set wildmenu "autocomplete for commands
+set lazyredraw " redraw only when we need to.
