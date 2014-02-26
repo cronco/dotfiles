@@ -9,11 +9,7 @@ source $VIMRUNTIME/macros/matchit.vim
 
 let base16colorspace=256
 
-if has('gui_running') 
-  colorscheme base16-ocean
-else 
-  colorscheme base16-solarized
-endif
+colorscheme base16-ocean
 
 set background=dark
 
@@ -60,7 +56,8 @@ autocmd FileType xml let b:match_words = '<\(\w\w*\):</\1,{:}'
 nnoremap <F5> :GundoToggle<CR>
 nmap <C-Tab> :tabnext<CR>
 nmap <C-S-Tab> :tabprev<CR>
-nmap <C-S-t> :tabnew<CR>
+nmap <C-T> :tabnew<CR>
+nmap <C-S-T> :tabclose<CR>
 map <F2> :NERDTreeToggle<CR>
 
 
@@ -72,6 +69,7 @@ set laststatus=2
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
+set guioptions+=a
 
 
 function! DelTagOfFile(file)
@@ -99,7 +97,10 @@ autocmd BufWritePost *.cpp,*.h,*.c, *.hpp call UpdateTags()
 autocmd Filetype haml setlocal noexpandtab ts=2 sts=2
 
 let g:ctrlp_map = '<leader>t'
+
 let g:ctrlp_cmd = 'CtrlP'
+
+nnoremap <leader>b :CtrlPBuffer<CR>
 
 "also take in consideration local .vimrc files
 set exrc
@@ -107,7 +108,7 @@ set exrc
 
 "folding
 set foldenable
-set foldlevelstart=99 "open most folds
+set foldlevelstart=99 "if this doesn't open all folds, you have a problem
 "
 " space open/closes folds
 nnoremap <space> za
