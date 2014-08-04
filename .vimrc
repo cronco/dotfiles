@@ -11,7 +11,11 @@ let base16colorspace=256
 
 colorscheme base16-ocean
 
-set background=dark
+if has("gui_running")
+  set background=dark
+else
+  set background=light
+endif
 
 syntax on
 filetype on
@@ -33,16 +37,9 @@ set matchpairs+=<:>
 let g:slimv_menu=1
 let g:syntastic_check_on_open=1
 let g:syntastic_mode_map = { 'mode': 'active',
-			\ 'active_filetypes': ['ruby', 'php', 'javascript', 'json'],
-			\ 'passive_filetypes': ['puppet'] }
+			\ 'active_filetypes': ['ruby', 'php', 'javascript', 'json']
+      \	}
 
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType js set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete
 
 au BufRead, BufNewFile *.md set ft=markdown syntax=markdown
@@ -57,12 +54,12 @@ nnoremap <F5> :GundoToggle<CR>
 nmap <C-Tab> :tabnext<CR>
 nmap <C-S-Tab> :tabprev<CR>
 nmap <C-T> :tabnew<CR>
-nmap <C-S-T> :tabclose<CR>
 map <F2> :NERDTreeToggle<CR>
 
 
 let g:Powerline_symbols = 'fancy'
 let mapleader=","
+let maplocalleader= "\\"
 set laststatus=2
 
 
@@ -91,7 +88,7 @@ function! UpdateTags()
   let resp = system(cmd)
 endfunction
 
-autocmd BufWritePost *.cpp,*.h,*.c, *.hpp call UpdateTags()
+autocmd BufWritePost *.cpp,*.h,*.c, call UpdateTags()
 
 "Here i'll add different indentation settings for different filetypes
 autocmd Filetype haml setlocal noexpandtab ts=2 sts=2
@@ -127,3 +124,24 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 set wildmenu "autocomplete for commands
 set lazyredraw " redraw only when we need to.
+
+set autoread "no more file has changed prompts.
+
+let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
+
+set incsearch " setup incremental search
+
+set hlsearch " setup highlight search results
+
+let g:startify_change_to_vcs_root = 1
+let g:startify_change_to_dir = 0
+
+
+function! LessToCss()
+  " hack because we need to compile style.less
+  let current_file = shellescape(expand('%:p'))
+  let filename = shellescape(expand('%:r'))
+  let command = "silent !lessc less/style.less static/css/style.css" 
+  execute command
+endfunction
+autocmd BufWritePost,FileWritePost *.less call LessToCss()
