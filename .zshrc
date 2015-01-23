@@ -49,3 +49,9 @@ export PATH=$PATH:/usr/local/heroku/bin:/home/cronco/.rvm/gems/ruby-2.0.0-p247/b
 
 set -o vi
 bindkey "^R" history-incremental-search-backward 
+
+export TERM="xterm-256color"
+
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-ocean.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
