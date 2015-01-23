@@ -9,12 +9,12 @@ source $VIMRUNTIME/macros/matchit.vim
 
 let base16colorspace=256
 
-colorscheme base16-ocean
+set background=dark
 
-if has("gui_running")
-  set background=dark
+if has('gui_running')
+  colorscheme base16-ocean
 else
-  set background=light
+  colorscheme seoul256
 endif
 
 syntax on
@@ -33,6 +33,7 @@ set matchtime=3
 " Put a colored line at the 80 char line
 set colorcolumn=80
 set vb
+set gfn=Mensch\ 9
 set matchpairs+=<:>     
 let g:slimv_menu=1
 let g:syntastic_check_on_open=1
@@ -146,3 +147,33 @@ function! LessToCss()
   execute command
 endfunction
 autocmd BufWritePost,FileWritePost *.less call LessToCss()
+
+" Maximize window
+  fu! ZoomWindow()
+    let [l:i, l:max, l:min] = [1, 0, 999999]
+    while winwidth(l:i) > 0
+      if winwidth(l:i) > l:max
+        let l:max = winwidth(l:i)
+      endif
+      if winwidth(l:i) < l:min
+        let l:min = winwidth(l:i)
+      endif
+      let l:i = l:i + 1
+    endwhile
+ 
+    if abs(l:max - l:min) > 5
+      execute "normal ^W="
+    else
+      execute "normal ^W\|^W_"
+    endif
+  endfunction
+
+  map <Leader>m :call ZoomWindow()<CR>
+
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+let g:mustache_abbreviations= 1
+
+set  t_Co=256 "256 terminal colors
