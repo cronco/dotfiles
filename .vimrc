@@ -49,6 +49,7 @@ autocmd FileType html let b:match_words = '<\(\w\w*\):</\1,{:}'
 autocmd FileType xhtml let b:match_words = '<\(\w\w*\):</\1,{:}'
 autocmd FileType mason let b:match_words = '<\(\w\w*\):</\1,{:}'
 autocmd FileType xml let b:match_words = '<\(\w\w*\):</\1,{:}'
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown " set md extension for markdown files
 
 nnoremap <F5> :GundoToggle<CR>
 nmap <C-Tab> :tabnext<CR>
