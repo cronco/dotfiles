@@ -23,7 +23,7 @@ filetype plugin indent on
 
 set nu
 set smartindent
-set ts=2
+set tabstop=2
 set ch=2
 set shiftwidth=2
 set expandtab
@@ -177,3 +177,4 @@ endif
 let g:mustache_abbreviations= 1
 
 set  t_Co=256 "256 terminal colors
+
