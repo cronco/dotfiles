@@ -17,14 +17,16 @@ else
   colorscheme seoul256
 endif
 
+set guifont=Inconsolata-g\ for\ Powerline:h12
+
 syntax on
 filetype on
 filetype plugin indent on
 
 set nu
+set ch=2
 set smartindent
 set tabstop=2
-set ch=2
 set shiftwidth=2
 set expandtab
 set nostartofline    
@@ -33,7 +35,6 @@ set matchtime=3
 " Put a colored line at the 80 char line
 set colorcolumn=80
 set vb
-set gfn=Mensch\ 9
 set matchpairs+=<:>     
 let g:slimv_menu=1
 let g:syntastic_check_on_open=1
@@ -177,4 +178,21 @@ endif
 let g:mustache_abbreviations= 1
 
 set  t_Co=256 "256 terminal colors
+let g:airline_powerline_fonts = 1
 
+  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+let g:airline#extensions#branch#displayed_head_limit = 6
+let g:airline#extensions#hunks#enabled = 0

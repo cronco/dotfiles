@@ -40,7 +40,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git heroku history github gitignore node npm sublime vi-mode git-flow pip zsh-syntax-highlighting wd virtualenvwrapper grunt)
+plugins=(git heroku history github gitignore node npm sublime git-flow pip zsh-syntax-highlighting wd virtualenvwrapper grunt vi-mode frontend-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,3 +61,8 @@ PERL5LIB="/home/cronco/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB
 PERL_LOCAL_LIB_ROOT="/home/cronco/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/cronco/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/cronco/perl5"; export PERL_MM_OPT;
+
+autoload -U zmv
+alias mmv="noglob zmv -W"
+alias cb="git checkout"
+alias gf="git fetch"
