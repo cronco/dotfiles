@@ -66,3 +66,6 @@ autoload -U zmv
 alias mmv="noglob zmv -W"
 alias cb="git checkout"
 alias gf="git fetch"
+alias gp="git pull"
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
