@@ -40,12 +40,12 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git heroku history github gitignore node npm sublime git-flow pip zsh-syntax-highlighting wd virtualenvwrapper grunt vi-mode frontend-search)
+plugins=(git heroku history github gitignore node npm sublime git-flow pip zsh-syntax-highlighting wd virtualenvwrapper grunt vi-mode frontend-search meteor)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:/usr/local/heroku/bin:/home/cronco/.rvm/gems/ruby-2.0.0-p247/bin:/home/cronco/.rvm/gems/ruby-2.0.0-p247@global/bin:/home/cronco/.rvm/rubies/ruby-2.0.0-p247/bin:/home/cronco/.rvm/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/cronco/.rvm/bin
+export PATH=$PATH:/usr/local/heroku/bin:/home/cronco/.rvm/gems/ruby-2.0.0-p247/bin:/home/cronco/.rvm/gems/ruby-2.0.0-p247@global/bin:/home/cronco/.rvm/rubies/ruby-2.0.0-p247/bin:/home/cronco/.rvm/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/cronco/.rvm/bin:/home/cronco/.yarn/bin
 
 set -o vi
 bindkey "^R" history-incremental-search-backward 
