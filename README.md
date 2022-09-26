@@ -1,3 +1,3 @@
-##Dotfiles
+## Dotfiles
 
-Just my dotfiles.
+Just my dotfiles. There are millions like them but these are my own.
