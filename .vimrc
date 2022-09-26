@@ -1,7 +1,6 @@
 filetype off
 
 call pathogen#infect()
-call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
 source $VIMRUNTIME/ftplugin/man.vim
@@ -11,11 +10,11 @@ let base16colorspace=256
 
 set background=dark
 
-if has('gui_running')
-  colorscheme base16-ocean
-else
-  colorscheme seoul256
-endif
+" if has('gui_running')
+colorscheme base16-ocean
+" else
+"   colorscheme seoul256
+" endif
 
 set guifont=Inconsolata-g\ for\ Powerline:h12
 
@@ -186,13 +185,17 @@ let g:airline_powerline_fonts = 1
 
 
 " powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+" let g:airline_symbols.branch = ''
+" let g:airline_symbols.readonly = ''
+" let g:airline_symbols.linenr = ''
 
-let g:airline#extensions#branch#displayed_head_limit = 6
-let g:airline#extensions#hunks#enabled = 0
+" let g:airline#extensions#branch#displayed_head_limit = 6
+" let g:airline#extensions#hunks#enabled = 0
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
